@@ -1,19 +1,76 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Youtube, Send, Music2, Download, ArrowRight } from "lucide-react";
+import { Youtube, Send, Music2, Download, ArrowRight, Sun, Moon, Monitor } from "lucide-react";
+import { useEffect, useState } from "react";
 
 const Index = () => {
+  const [theme, setTheme] = useState<'light' | 'dark' | 'system'>('system');
+
+  useEffect(() => {
+    const root = window.document.documentElement;
+    root.classList.remove('light', 'dark');
+
+    if (theme === 'system') {
+      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      root.classList.add(systemTheme);
+    } else {
+      root.classList.add(theme);
+    }
+  }, [theme]);
+
+  const features = {
+    cloudnest: [
+      "Безопасность: Многоуровневая защита файлов",
+      "Доступность: Доступ с любых устройств",
+      "Синхронизация: Между всеми устройствами",
+      "Простота использования: Интуитивный интерфейс"
+    ],
+    prekHelper: [
+      "Диагностика системы: Анализ производительности",
+      "Оптимизация работы: Ускорение системы",
+      "Информация о системе: Подробные данные о ПК",
+      "Обновления: Автоматическая проверка"
+    ]
+  };
+
   return (
-    <div className="min-h-screen bg-background text-text">
-      {/* Hero Section with Gradient Background */}
-      <section className="relative py-24 bg-gradient-to-r from-[#9b87f5] to-[#7E69AB] text-white animate-fade-in">
+    <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
+      {/* Theme Toggle */}
+      <div className="fixed top-4 right-4 flex gap-2">
+        <Button
+          variant={theme === 'light' ? 'default' : 'outline'}
+          size="icon"
+          onClick={() => setTheme('light')}
+          className="animate-fade-in"
+        >
+          <Sun className="h-5 w-5" />
+        </Button>
+        <Button
+          variant={theme === 'dark' ? 'default' : 'outline'}
+          size="icon"
+          onClick={() => setTheme('dark')}
+          className="animate-fade-in"
+        >
+          <Moon className="h-5 w-5" />
+        </Button>
+        <Button
+          variant={theme === 'system' ? 'default' : 'outline'}
+          size="icon"
+          onClick={() => setTheme('system')}
+          className="animate-fade-in"
+        >
+          <Monitor className="h-5 w-5" />
+        </Button>
+      </div>
+
+      {/* Hero Section */}
+      <section className="relative py-24 bg-gradient-to-r from-primary to-[#7E69AB] text-white animate-fade-in">
         <div className="container mx-auto px-4">
           <h1 className="text-4xl md:text-6xl font-bold mb-6 animate-scale-in">
             Добро пожаловать в Prek Company!
           </h1>
-          <p className="text-xl max-w-2xl mx-auto mb-12 opacity-90">
-            Мы разрабатываем инновационные программы для вашего удобства. 
-            Наша цель — создать решения, которые упрощают вашу работу с техникой.
+          <p className="text-xl max-w-3xl mx-auto mb-12 opacity-90">
+            Мы разрабатываем инновационные программные решения, которые делают вашу работу с компьютером и мобильными устройствами более эффективной и удобной.
           </p>
           <Button 
             size="lg"
@@ -24,16 +81,13 @@ const Index = () => {
             <ArrowRight className="ml-2" />
           </Button>
         </div>
-        <div className="absolute bottom-0 left-0 w-full h-16 bg-background" style={{
-          clipPath: 'polygon(0 100%, 100% 100%, 100% 0)'
-        }}></div>
       </section>
 
       {/* Programs Section */}
-      <section id="programs" className="py-20 bg-gray-50 animate-fade-in" style={{ animationDelay: "0.2s" }}>
+      <section id="programs" className="py-20 bg-background animate-fade-in">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold mb-12 text-center">Наши Программы</h2>
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
             <Card className="transform hover:scale-105 transition-all duration-300">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
@@ -43,9 +97,16 @@ const Index = () => {
               </CardHeader>
               <CardContent>
                 <p className="text-text-light mb-6">
-                  Программа для хранения файлов в облаке с улучшенной безопасностью. 
-                  Храните ваши данные надежно и получайте к ним доступ откуда угодно.
+                  Надежное и безопасное облачное хранилище для ваших файлов. Храните, синхронизируйте и делитесь файлами между устройствами.
                 </p>
+                <ul className="space-y-2 mb-6">
+                  {features.cloudnest.map((feature, index) => (
+                    <li key={index} className="flex items-center gap-2">
+                      <div className="w-2 h-2 rounded-full bg-primary"></div>
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
                 <Button 
                   className="w-full bg-primary hover:bg-primary-hover"
                   onClick={() => window.open("#download", "_blank")}
@@ -59,20 +120,26 @@ const Index = () => {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Download className="w-6 h-6 text-primary" />
-                  Скоро
+                  Prek Helper
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-text-light mb-6">
-                  Мы работаем над новыми продуктами, которые сделают вашу работу еще удобнее.
-                  Следите за обновлениями!
+                  Универсальная программа для управления настройками вашего ПК. Оптимизируйте работу устройства и исправляйте ошибки.
                 </p>
+                <ul className="space-y-2 mb-6">
+                  {features.prekHelper.map((feature, index) => (
+                    <li key={index} className="flex items-center gap-2">
+                      <div className="w-2 h-2 rounded-full bg-primary"></div>
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
                 <Button 
-                  variant="outline"
-                  className="w-full"
-                  disabled
+                  className="w-full bg-primary hover:bg-primary-hover"
+                  onClick={() => window.open("#download", "_blank")}
                 >
-                  Скоро
+                  Скачать Prek Helper
                 </Button>
               </CardContent>
             </Card>
@@ -80,10 +147,10 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Social Media Section with Gradient Cards */}
-      <section className="container py-20 animate-fade-in" style={{ animationDelay: "0.4s" }}>
+      {/* Social Media Section */}
+      <section className="container py-20 animate-fade-in">
         <h2 className="text-3xl font-bold mb-8 text-center">
-          Подписывайтесь на нас в социальных сетях
+          Следите за нами в социальных сетях
         </h2>
         <p className="text-text-light mb-12 text-center">
           Будьте в курсе последних новостей и обновлений!
@@ -119,26 +186,34 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Download Section with Gradient Background */}
-      <section id="download" className="relative py-20 bg-gradient-to-r from-primary to-[#7E69AB] text-white animate-fade-in" style={{ animationDelay: "0.6s" }}>
+      {/* Download Section */}
+      <section id="download" className="relative py-20 bg-gradient-to-r from-primary to-[#7E69AB] text-white animate-fade-in">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-8">Готовы начать?</h2>
           <p className="text-lg mb-8 opacity-90 max-w-2xl mx-auto">
-            Скачайте CloudNest прямо сейчас и начните использовать все преимущества облачного хранения данных.
+            Скачайте наши программы прямо сейчас и начните использовать все их преимущества.
           </p>
-          <Button 
-            variant="secondary"
-            size="lg"
-            className="transform hover:scale-105 transition-transform bg-white text-primary hover:bg-gray-100"
-            onClick={() => window.open("#download", "_blank")}
-          >
-            <Download className="mr-2" />
-            Скачать программу CloudNest
-          </Button>
+          <div className="flex flex-col md:flex-row gap-4 justify-center">
+            <Button 
+              variant="secondary"
+              size="lg"
+              className="transform hover:scale-105 transition-transform bg-white text-primary hover:bg-gray-100"
+              onClick={() => window.open("#download", "_blank")}
+            >
+              <Download className="mr-2" />
+              Скачать CloudNest
+            </Button>
+            <Button 
+              variant="secondary"
+              size="lg"
+              className="transform hover:scale-105 transition-transform bg-white text-primary hover:bg-gray-100"
+              onClick={() => window.open("#download", "_blank")}
+            >
+              <Download className="mr-2" />
+              Скачать Prek Helper
+            </Button>
+          </div>
         </div>
-        <div className="absolute top-0 left-0 w-full h-16 bg-background" style={{
-          clipPath: 'polygon(0 0, 100% 0, 100% 100%)'
-        }}></div>
       </section>
     </div>
   );

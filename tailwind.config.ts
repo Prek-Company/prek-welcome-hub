@@ -22,15 +22,18 @@ export default {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
+        background: {
+          DEFAULT: "hsl(var(--background))",
+          secondary: "hsl(var(--background-secondary))",
+        },
         foreground: "hsl(var(--foreground))",
         primary: {
           DEFAULT: "#9b87f5",
           hover: "#8a73f4",
         },
         text: {
-          DEFAULT: "#222222",
-          light: "#666666",
+          DEFAULT: "hsl(var(--text))",
+          light: "hsl(var(--text-light))",
         }
       },
       keyframes: {
