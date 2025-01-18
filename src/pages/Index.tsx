@@ -36,7 +36,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
       {/* Theme Toggle */}
-      <div className="fixed top-4 right-4 flex gap-2">
+      <div className="fixed top-4 right-4 flex gap-2 z-50">
         <Button
           variant={theme === 'light' ? 'default' : 'outline'}
           size="icon"
