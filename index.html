@@ -1,17 +1,117 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>prek-welcome-hub</title>
-    <meta name="description" content="Lovable Generated Project" />
-    <meta name="author" content="Lovable" />
-    <meta property="og:image" content="/og-image.png" />
-  </head>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prek Company</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Theme Switcher -->
+    <div class="theme-switcher">
+        <button id="lightTheme" class="theme-btn">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+        </button>
+        <button id="darkTheme" class="theme-btn">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+        </button>
+        <button id="systemTheme" class="theme-btn">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+            </svg>
+        </button>
+    </div>
 
-  <body>
-    <div id="root"></div>
-    <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1 class="fade-in">Добро пожаловать в Prek Company!</h1>
+        <p class="fade-in">Мы разрабатываем инновационные программные решения, которые делают вашу работу с компьютером и мобильными устройствами более эффективной и удобной.</p>
+        <button class="cta-button fade-in" onclick="scrollToPrograms()">Узнать больше</button>
+    </section>
+
+    <!-- Programs Section -->
+    <section id="programs" class="programs">
+        <h2>Наши Программы</h2>
+        <div class="cards-container">
+            <div class="card fade-in">
+                <h3>CloudNest</h3>
+                <p>Надежное и безопасное облачное хранилище для ваших файлов.</p>
+                <ul>
+                    <li>Безопасность: Многоуровневая защита файлов</li>
+                    <li>Доступность: Доступ с любых устройств</li>
+                    <li>Синхронизация: Между всеми устройствами</li>
+                    <li>Простота использования: Интуитивный интерфейс</li>
+                </ul>
+                <button class="download-btn">Скачать CloudNest</button>
+            </div>
+            <div class="card fade-in">
+                <h3>Prek Helper</h3>
+                <p>Универсальная программа для управления настройками вашего ПК.</p>
+                <ul>
+                    <li>Диагностика системы: Анализ производительности</li>
+                    <li>Оптимизация работы: Ускорение системы</li>
+                    <li>Информация о системе: Подробные данные о ПК</li>
+                    <li>Обновления: Автоматическая проверка</li>
+                </ul>
+                <button class="download-btn">Скачать Prek Helper</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Media Section -->
+    <section class="social-media">
+        <h2>Следите за нами в социальных сетях</h2>
+        <p>Будьте в курсе последних новостей и обновлений!</p>
+        <div class="social-links">
+            <a href="https://youtube.com" target="_blank" class="social-btn youtube">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+                    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                </svg>
+                YouTube
+            </a>
+            <a href="https://telegram.org" target="_blank" class="social-btn telegram">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 2L11 13"></path>
+                    <path d="M22 2L15 22L11 13L2 9L22 2Z"></path>
+                </svg>
+                Telegram
+            </a>
+            <a href="https://tiktok.com" target="_blank" class="social-btn tiktok">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M17 2H7a5 5 0 0 0-5 5v10a5 5 0 0 0 5 5h10a5 5 0 0 0 5-5V7a5 5 0 0 0-5-5Z"></path>
+                    <path d="M12 12v-8"></path>
+                    <path d="M8 12a4 4 0 1 0 4 4v-8"></path>
+                </svg>
+                TikTok
+            </a>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section class="download">
+        <h2>Готовы начать?</h2>
+        <p>Скачайте наши программы прямо сейчас и начните использовать все их преимущества.</p>
+        <div class="download-buttons">
+            <button class="download-btn">Скачать CloudNest</button>
+            <button class="download-btn">Скачать Prek Helper</button>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
 </html>
